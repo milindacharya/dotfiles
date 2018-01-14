@@ -1,7 +1,9 @@
 " A vimrc for Go development
 " Contains autocompletion by YouCompleteMe
-"
 
+"""""""""""""""""""
+" Install plugins
+"""""""""""""""""""
 call plug#begin()
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'fatih/molokai'
@@ -11,10 +13,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
 """"""""""""""""""""""
-"      Settings      "
+" vim Settings    
 """"""""""""""""""""""
 set nocompatible                " Enables us Vim specific features
 filetype off                    " Reset filetype detection first ...
@@ -49,7 +52,11 @@ set pumheight=10                " Completion window max size
 set nocursorcolumn              " Do not highlight column (speeds up highlighting)
 set nocursorline                " Do not highlight cursor (speeds up highlighting)
 set lazyredraw                  " Wait to redraw
-set foldmethod=syntax
+
+" Change cursor and current line colour
+let &t_SI = "\<esc>[5 q"
+let &t_SR = "\<esc>[5 q"
+let &t_EI = "\<esc>[2 q"
 
 " Enable to copy to clipboard for operations like yank, delete, change and put
 " http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
@@ -67,20 +74,15 @@ endif
 " Colorscheme
 syntax enable
 set t_Co=256
-"let g:rehash256 = 1
-"let g:molokai_original = 1
-"colorscheme molokai
+set background=dark
+colorscheme solarized
 
 """"""""""""""""""""""
 "      Mappings      "
 """"""""""""""""""""""
-"
 " Nerdtree mapping
 
 map <C-t> :NERDTreeToggle<CR>
-
-" Set leader shortcut to a comma ','. By default it's the backslash
-"let mapleader = ","
 
 " Jump to next error with Ctrl-n and previous error with Ctrl-m. Close the
 " quickfix window with <leader>a
@@ -109,12 +111,15 @@ autocmd BufEnter * silent! lcd %:p:h
 """""""""""""""""""""
 "      Plugins      "
 """""""""""""""""""""
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " vim-go
 let g:go_fmt_command = "goimports"
 let g:go_autodetect_gopath = 1
 let g:go_list_type = "quickfix"
-
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
