@@ -1,30 +1,34 @@
-# -*- mode: ruby -*-
+#-*- mode: ruby -*-
 # vi: set ft=ruby :
-
+#####
+#
+# This vagrant file is used to test vimrc script for golang development
+#
+#####
 $script = <<SCRIPT
 sudo su - root
-sudo add-apt-repository -y ppa:jonathonf/vim
-sudo add-apt-repository -y ppa:masterminds/glide 
-sudo apt-get update
-sudo apt-get install   -y  vim build-essential cmake python-dev python3-dev git glide
-git clone https://github.com/milindacharya/vimdotfiles.git
-cp ./vimdotfiles/vimrc ~/.vimrc
-wget https://storage.googleapis.com/golang/go1.9.2.linux-amd64.tar.gz
-sudo tar -xvf go1.9.2.linux-amd64.tar.gz
-sudo mv go /usr/local
-mkdir workdir
+curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
+bash nodesource_setup.sh
+apt-get update
+apt-get install -y build-essential gcc g++ make nodejs yarn
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+wget https://storage.googleapis.com/golang/go1.13.linux-amd64.tar.gz
+tar -xf go1.13.linux-amd64.tar.gz
+mv go /usr/local
+mkdir -p /workdir/src
 export GOROOT=/usr/local/go
 export GOPATH=/workdir
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 echo "export GOROOT=/usr/local/go" >> ~/.profile
 echo "export GOPATH=/workdir" >> ~/.profile
 echo "export PATH=\$GOPATH/bin:\$GOROOT/bin:\$PATH" >> ~/.profile
-echo "Open vim and do :PlugInstall"
+curl https://raw.githubusercontent.com/milindacharya/dotfiles/master/vimrc --output .vimrc
+echo "*** Run the following as root to debug problems ***"
+echo "vim +PlugInstall +GoInstallBinaries"
 SCRIPT
 
 Vagrant.configure("2") do |config|
-    config.vm.box = "ubuntu/xenial64"
+    config.vm.box = "ubuntu/bionic64"
     config.vm.provider "virtualbox" do |v|
 	v.memory = 4096
     end
