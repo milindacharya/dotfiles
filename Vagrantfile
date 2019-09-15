@@ -23,7 +23,8 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 echo "export GOROOT=/usr/local/go" >> ~/.profile
 echo "export GOPATH=/workdir" >> ~/.profile
 echo "export PATH=\$GOPATH/bin:\$GOROOT/bin:\$PATH" >> ~/.profile
-curl https://raw.githubusercontent.com/milindacharya/dotfiles/master/vimrc --output ~/.vimrc
+curl https://raw.githubusercontent.com/milindacharya/dotfiles/master/vimrc --output /root/.vimrc
+curl https://raw.githubusercontent.com/milindacharya/dotfiles/master/coc-settings.json --output /root/.vim/coc-settings.json
 sudo 
 echo "*** Run the following as root to debug problems ***"
 echo "vim +PlugInstall"
