@@ -10,6 +10,8 @@ Current vimrc file needs vim-plug which can be downloaded and installed from [vi
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
+
+### Install vim plugins and settings file
 Once vim-plug is installed, you can copy `vimrc` as `.vimrc` in your home directory and do the following.
 ```
 vim +PlugInstall 
