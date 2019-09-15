@@ -14,7 +14,7 @@ vim +PlugInstall  +GoInstallBinaries
 ```
 You can then copy vimrc or symlink it with ~/.vimrc
 
-## Want to do a trial run withoug installation?
+## Want to do a trial run without installation?
 Clone this repo locally and run 
 ```
 vagrant up && vagrant ssh
