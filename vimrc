@@ -1,16 +1,15 @@
 call plug#begin('~/.vim/plugged')
-
-" < Other Plugins, if they exist >
-
+        " plugins for golang
 	Plug 'fatih/vim-go'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 	" vim airline
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'NLKNguyen/papercolor-theme'
+
 	" nerdtree and nerdtree-git plugin
 	Plug 'scrooloose/nerdtree'
-	"Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
 " airline fonts with papercolor theme

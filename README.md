@@ -10,18 +10,21 @@ Current vimrc file needs vim-plug which can be downloaded and installed from [vi
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
-Once vim-plug is installed, you can either start your vim using `vim -u vimrc` and install all the plugins from vim.
+Once vim-plug is installed, you can copy `vimrc` as `.vimrc` in your home directory and do the following.
 ```
-vim +PlugInstall  +GoInstallBinaries
+vim +PlugInstall 
+vim +GoInstallBinaries
+cp coc-settings.json ~/.vim/
 ```
-You can then copy vimrc or symlink it with ~/.vimrc
+This will install vim plugins, install go binaries necessary and copy coc-settings.json to use `gopls` language server.
 
 ## Want to do a trial run without installation?
 Clone this repo locally and run 
 ```
 vagrant up && vagrant ssh
 sudo su - root
-vim +PlugInstall +GoInstallBinaries
+vim +PlugInstall 
+vim +GoInstallBinaries
 ```
 Create a hello-world.go in `/workdir/src` to test installation.
 

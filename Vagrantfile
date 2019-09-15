@@ -9,8 +9,9 @@ $script = <<SCRIPT
 sudo su - root
 curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
 bash nodesource_setup.sh
+sudo add-apt-repository --yes ppa:jonathonf/vim
 apt-get update
-apt-get install -y build-essential gcc g++ make nodejs yarn
+apt-get install -y build-essential gcc g++ make nodejs yarn vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 wget https://storage.googleapis.com/golang/go1.13.linux-amd64.tar.gz
 tar -xf go1.13.linux-amd64.tar.gz
@@ -22,9 +23,11 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 echo "export GOROOT=/usr/local/go" >> ~/.profile
 echo "export GOPATH=/workdir" >> ~/.profile
 echo "export PATH=\$GOPATH/bin:\$GOROOT/bin:\$PATH" >> ~/.profile
-curl https://raw.githubusercontent.com/milindacharya/dotfiles/master/vimrc --output .vimrc
+curl https://raw.githubusercontent.com/milindacharya/dotfiles/master/vimrc --output ~/.vimrc
+sudo 
 echo "*** Run the following as root to debug problems ***"
-echo "vim +PlugInstall +GoInstallBinaries"
+echo "vim +PlugInstall"
+echo "vim +GoInstallBinaries"
 SCRIPT
 
 Vagrant.configure("2") do |config|
