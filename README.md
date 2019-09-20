@@ -3,6 +3,7 @@
 # dotfile for vim 
 This repo contains a vimrc file that I use for my development work. The current collection contains vimrc file for go development with autocomplete. It is tested with vim 8.1 and golang 1.13 for autocompletion using `gopls` implementation of Language Server Protocol. The current vimrc is tested on vim 8.1.1900 on MacOS 10.14.4 and Ubuntu 18.04 with golang 1.13
 
+![Autocomplete in go](tty.gif)
 
 ### Backup existing configuration
 Backup your existing vimrc file before changing or overwriting it.
